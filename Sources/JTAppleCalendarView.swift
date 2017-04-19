@@ -219,12 +219,12 @@ open class JTAppleCalendarView: UICollectionView {
     }
     
     /// A semantic description of the view’s contents, used to determine whether the view should be flipped when switching between left-to-right and right-to-left layouts.
-    open override var semanticContentAttribute: UISemanticContentAttribute {
-        didSet {
-            transform.a = semanticContentAttribute == .forceRightToLeft ? -1 : 1
-            calendarViewLayout.invalidateLayout()
-        }
-    }
+//    open override var semanticContentAttribute: UISemanticContentAttribute {
+//        didSet {
+//            transform.a = semanticContentAttribute == .forceRightToLeft ? -1 : 1
+//            calendarViewLayout.invalidateLayout()
+//        }
+//    }
     
     func developerError(string: String) {
         print(string)
@@ -250,7 +250,7 @@ open class JTAppleCalendarView: UICollectionView {
         minimumInteritemSpacing = newLayout.minimumInteritemSpacing
         
         
-        transform.a = semanticContentAttribute == .forceRightToLeft ? -1 : 1
+        transform.a = 1
         
         super.dataSource = self
         super.delegate = self
