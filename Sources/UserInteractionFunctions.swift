@@ -210,8 +210,9 @@ extension JTAppleCalendarView {
         super.reloadData()
         isReloadDataInProgress = false
         
-        if !isCalendarLayoutLoaded { return } // Return if the reload is not yet complete and cells have not yet been re-generated
-        if !delayedExecutionClosure.isEmpty { executeDelayedTasks() }
+        if !delayedExecutionClosure.isEmpty {
+            executeDelayedTasks()
+        }
     }
     
     /// Reload the date of specified date-cells on the calendar-view
@@ -272,7 +273,7 @@ extension JTAppleCalendarView {
     /// in your viewDidLoad
     public func selectDates(_ dates: [Date], triggerSelectionDelegate: Bool = true, keepSelectionIfMultiSelectionAllowed: Bool = false) {
         if dates.isEmpty { return }
-        if (!isCalendarLayoutLoaded || isReloadDataInProgress) {
+        if functionIsUnsafeSafeToRun {
             // If the calendar is not yet fully loaded.
             // Add the task to the delayed queue
             delayedExecutionClosure.append {[unowned self] in
